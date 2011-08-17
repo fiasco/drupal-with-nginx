@@ -21,6 +21,7 @@
    greater security.
 
    This configuration started life as a fork of
+   [perusio's](https://github.com/perusio/drupal-with-nginx) which was a fork of
    [yhager's](github.com/yhager/nginx_drupal) configuration, tempered
    by [omega8cc](http://github.com/omega8cc/nginx-for-drupal) and
    [Brian Mercer](http://test.brianmercer.com/content/nginx-configuration-drupal)
@@ -98,31 +99,31 @@ Furthermore there are **two** options for each configuration:
 
    1. I'm **not using** spaces or any module that relies in custom URL
       rewrites. Use the `drupal.conf` config in your vhost (`server`
-      block): `include sites-availables/drupal.conf;`.
+      block): `include includes/drupal.conf;`.
    
    2. I'm running [OpenAtrium](http://openatrium.com),
       [ManagingNews](http://managingnews.com) or any other site that
       **uses** [spaces](http://drupal.org/project/spaces). Use the
       `drupal_spaces.conf` config in your vhost (`server` block):
-      `include sites-availables/drupal_spaces.conf;`
+      `include includes/drupal_spaces.conf;`
     
    3. I'm using [Boost](http://drupal.org/project/boost) for caching
       on my drupal site and **not using** spaces or any module that
       relies in custom URL rewrites. Use the `drupal_boost.conf`
       config in your vhost (`server` block): `include
-      sites-availables/drupal_boost.conf;`
+      includes/drupal_boost.conf;`
       
    4. I'm using [Boost](http://drupal.org/project/boost) and running
       [OpenAtrium](http://openatrium.com),
       [ManagingNews](http://managingnews.com) or any other site that
       **uses** [spaces](http://drupal.org/project/spaces). Use the
       `drupal_spaces_boost.conf` config in your vhost (`server`
-      block): `include sites-availables/drupal_spaces_boost.conf;`
+      block): `include includes/drupal_spaces_boost.conf;`
    
    5. I'm **not using drush** for updating and running
       cron. Additionally you should also include the
       `drupal_cron_update.conf` config in your vhost (`server`
-      block): `include sites-availables/drupal_cron_update.conf;`
+      block): `include includes/drupal_cron_update.conf;`
 
 
 ## Drupal 6 Global Redirect and the 0 Rewrites Configuration
@@ -131,7 +132,7 @@ There's a setting that is enabled by default in
 [`globalredirect`](http://drupal.org/project/globalredirect) that
 removes the trailing slash in the URIs. That setting creates a
 redirect loop with the **0 rewrites config** provided by
-`sites-available/drupal.conf` or `sites-available/drupal_boost.conf`
+`includes/drupal.conf` or `includes/drupal_boost.conf`
 if using [Boost](http://drupal.org/project/boost).
 
 There are two ways to deal with that:
